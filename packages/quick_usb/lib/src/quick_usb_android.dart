@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'dart:typed_data';
 
 import 'package:flutter/services.dart';
 import 'package:quick_usb/src/common.dart';
@@ -110,10 +109,8 @@ class QuickUsbAndroid extends QuickUsbPlatform {
   }
 
   @override
-  Future<Uint8List> bulkTransferIn(
-      UsbEndpoint endpoint, int maxLength, int timeout) async {
-    assert(endpoint.direction == UsbEndpoint.DIRECTION_IN,
-        'Endpoint\'s direction should be in');
+  Future<Uint8List> bulkTransferIn(UsbEndpoint endpoint, int maxLength, int timeout) async {
+    assert(endpoint.direction == UsbEndpoint.DIRECTION_IN, 'Endpoint\'s direction should be in');
 
     List<dynamic> data = await _channel.invokeMethod('bulkTransferIn', {
       'endpoint': endpoint.toMap(),
@@ -124,10 +121,8 @@ class QuickUsbAndroid extends QuickUsbPlatform {
   }
 
   @override
-  Future<int> bulkTransferOut(
-      UsbEndpoint endpoint, Uint8List data, int timeout) async {
-    assert(endpoint.direction == UsbEndpoint.DIRECTION_OUT,
-        'Endpoint\'s direction should be out');
+  Future<int> bulkTransferOut(UsbEndpoint endpoint, Uint8List data, int timeout) async {
+    assert(endpoint.direction == UsbEndpoint.DIRECTION_OUT, 'Endpoint\'s direction should be out');
 
     return await _channel.invokeMethod('bulkTransferOut', {
       'endpoint': endpoint.toMap(),

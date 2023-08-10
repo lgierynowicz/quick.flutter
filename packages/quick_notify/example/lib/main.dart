@@ -1,12 +1,15 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
 import 'package:quick_notify/quick_notify.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatefulWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   _MyAppState createState() => _MyAppState();
 }
@@ -25,23 +28,27 @@ class _MyAppState extends State<MyApp> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  child: Text('hasPermission'),
+                  child: const Text('hasPermission'),
                   onPressed: () async {
                     var hasPermission = await QuickNotify.hasPermission();
-                    print('hasPermission $hasPermission');
+                    if (kDebugMode) {
+                      print('hasPermission $hasPermission');
+                    }
                   },
                 ),
                 ElevatedButton(
-                  child: Text('requestPermission'),
+                  child: const Text('requestPermission'),
                   onPressed: () async {
                     var requestPermission = await QuickNotify.requestPermission();
-                    print('requestPermission $requestPermission');
+                    if (kDebugMode) {
+                      print('requestPermission $requestPermission');
+                    }
                   },
                 ),
               ],
             ),
             ElevatedButton(
-              child: Text('notify'),
+              child: const Text('notify'),
               onPressed: () {
                 QuickNotify.notify(
                   title: 'My title',
