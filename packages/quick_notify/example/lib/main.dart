@@ -1,3 +1,7 @@
+// ignore_for_file: use_key_in_widget_constructors
+
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
 import 'package:quick_notify/quick_notify.dart';
@@ -25,23 +29,23 @@ class _MyAppState extends State<MyApp> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  child: Text('hasPermission'),
+                  child: const Text('hasPermission'),
                   onPressed: () async {
                     var hasPermission = await QuickNotify.hasPermission();
-                    print('hasPermission $hasPermission');
+                    log('hasPermission $hasPermission');
                   },
                 ),
                 ElevatedButton(
-                  child: Text('requestPermission'),
+                  child: const Text('requestPermission'),
                   onPressed: () async {
                     var requestPermission = await QuickNotify.requestPermission();
-                    print('requestPermission $requestPermission');
+                    log('requestPermission $requestPermission');
                   },
                 ),
               ],
             ),
             ElevatedButton(
-              child: Text('notify'),
+              child: const Text('notify'),
               onPressed: () {
                 QuickNotify.notify(
                   title: 'My title',
